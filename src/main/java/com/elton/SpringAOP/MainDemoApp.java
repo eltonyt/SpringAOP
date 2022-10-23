@@ -1,6 +1,7 @@
 package com.elton.SpringAOP;
 
 import com.elton.SpringAOP.dao.AccountDAO;
+import com.elton.SpringAOP.dao.MembershipDAO;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainDemoApp {
@@ -11,13 +12,16 @@ public class MainDemoApp {
 
 //        get the bean from spring container
         AccountDAO theAccountDAO = context.getBean("accountDAO", AccountDAO.class);
+        MembershipDAO theMembershipDao = context.getBean("membershipDAO", MembershipDAO.class);
 
 //        call the bussiness method
         theAccountDAO.addAccount();
+        theMembershipDao.addSillyAccount();;
 
 //        do it again!
         System.out.println("\n let's call it again!\n");
         theAccountDAO.addAccount();
+        theMembershipDao.addSillyAccount();
 
 //        close the context
         context.close();
