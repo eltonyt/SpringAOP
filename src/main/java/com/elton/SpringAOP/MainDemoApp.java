@@ -16,7 +16,8 @@ public class MainDemoApp {
 
 //        call the bussiness method
         theAccountDAO.addAccount();
-        theMembershipDao.addSillyAccount();;
+        theMembershipDao.addSillyAccount();
+        theAccountDAO.addReturnTypeAccount();
 
 //        do it again!
         System.out.println("\n let's call it again!\n");
