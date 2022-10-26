@@ -8,4 +8,8 @@ public class MembershipDAO {
         System.out.println(getClass() + ": DOINg MY DB WORK: ADDING Silly Membership Account");
         return true;
     }
+
+    public void dummyMethod() {
+        System.out.println(getClass() + ": DOING DUMMY THINGS.");
+    }
 }

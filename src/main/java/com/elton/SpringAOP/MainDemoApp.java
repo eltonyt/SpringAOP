@@ -27,6 +27,7 @@ public class MainDemoApp {
         System.out.println("\n let's call it again!\n");
 //        theAccountDAO.addAccount();
         theMembershipDao.addSillyAccount();
+        theMembershipDao.dummyMethod();
 
 //        close the context
         context.close();
