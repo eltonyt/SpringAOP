@@ -18,7 +18,7 @@ public class MainDemoApp {
         Account newAccount = new Account();
         newAccount.setName("John");
         newAccount.setLevel("VIP");
-        theAccountDAO.addAccount(newAccount);
+        theAccountDAO.addAccount(newAccount, true);
         theAccountDAO.addReturnTypeAccount(theAccountDAO);
         theMembershipDao.addSillyAccount();
         theAccountDAO.addReturnTypeAccount();
