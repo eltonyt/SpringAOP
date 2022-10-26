@@ -15,13 +15,17 @@ public class MainDemoApp {
         MembershipDAO theMembershipDao = context.getBean("membershipDAO", MembershipDAO.class);
 
 //        call the bussiness method
-        theAccountDAO.addAccount();
+        Account newAccount = new Account();
+        newAccount.setName("John");
+        newAccount.setLevel("VIP");
+        theAccountDAO.addAccount(newAccount);
+        theAccountDAO.addReturnTypeAccount(theAccountDAO);
         theMembershipDao.addSillyAccount();
         theAccountDAO.addReturnTypeAccount();
 
 //        do it again!
         System.out.println("\n let's call it again!\n");
-        theAccountDAO.addAccount();
+//        theAccountDAO.addAccount();
         theMembershipDao.addSillyAccount();
 
 //        close the context

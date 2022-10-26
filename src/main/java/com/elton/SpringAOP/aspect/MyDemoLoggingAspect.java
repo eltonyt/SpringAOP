@@ -12,13 +12,18 @@ public class MyDemoLoggingAspect {
 
 //    let's start with an @Before advice
 
-//    @Before("execution(public void com.elton.SpringAOP.dao.AccountDAO.addAccount())")
-//    @Before("execution(public void add*())")
-//    @Before("execution(public * add*())")
-    @Before("execution(* add*())")
+//    @Before("execution(public void com.elton.SpringAOP.dao.AccountDAO.addAccount())") - Specific Reference
+//    @Before("execution(public void add*())") - Public method start with add with void return type
+//    @Before("execution(public * add*())") - Public method start with add with any return types
+//    @Before("execution(* add*())") - Any methods start with add with any return types
+//    @Before("execution(* add*(com.elton.SpringAOP.dao.AccountDAO))") - One parameter with specific parameter type
+    @Before("execution(* add*(com.elton.SpringAOP.Account))")
+//    ANY CLASSES UNDER THIS PACKAGE AND ANY METHODS
     public void beforeAddAccountAdvice() {
 
         System.out.println("\n===========>>>> Executing @Before advice on method");
 
     }
+
+
 }
