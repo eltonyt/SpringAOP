@@ -23,6 +23,11 @@ public class MainDemoApp {
         theMembershipDao.addSillyAccount();
         theAccountDAO.addReturnTypeAccount();
 
+        theAccountDAO.setName("Elton");
+        theAccountDAO.setServiceNum("1");
+        theAccountDAO.getName();
+        theAccountDAO.getServiceNum();
+
 //        do it again!
         System.out.println("\n let's call it again!\n");
 //        theAccountDAO.addAccount();
