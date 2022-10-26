@@ -19,7 +19,7 @@ public class MyDemoLoggingAspect {
 //    @Before("execution(* add*(com.elton.SpringAOP.dao.AccountDAO))") - One parameter with specific parameter type
 //    @Before("execution(* add*(com.elton.SpringAOP.Account, ..))") - ANY CLASSES UNDER THIS PACKAGE AND ANY METHODS
 
-    @Before("execution(* com.elton.SpringAOP.dao.*.*(..))")
+//    @Before("execution(* com.elton.SpringAOP.dao.*.*(..))")
     public void beforeAddAccountAdvice() {
 
         System.out.println("\n===========>>>> Executing @Before advice on method");
