@@ -28,6 +28,20 @@ public class MyCloudLogAsyncAspect {
 
         // PRINT OUT THE RESULTS OF THE METHOD CALL
         System.out.println("\n===========>>>>>> result is: " + result);
+
+        // LET'S POST-PROCESS THE DATA ... MODIFY IT :-)
+
+        // CONVERT THE ACCOUNT NAMES TO UPPERCASE
+        convertAccountNamesToUpperCase(result);
+
+    }
+
+    private void convertAccountNamesToUpperCase(List<Account> result) {
+        // LOOP THROUGH ACCOUNTS
+        for (Account account : result) {
+            // GET UPPERCASE VERSION OF NAME & UPDATE THE NAME ON THE ACCOUNT
+            account.setName(account.getName().toUpperCase());
+        }
     }
 
     @Before("com.elton.SpringAOP.aspect.LuvAopExpressionUtils.forDaoNoSettersOrGetters()")
