@@ -3,11 +3,31 @@ package com.elton.SpringAOP.dao;
 import com.elton.SpringAOP.Account;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class AccountDAO {
 
     private String name;
     private String serviceNum;
+
+//    ADD A NEW METHOD: FIND ACCOUNTS
+    public List<Account> findAccounts() {
+        List<Account> myAccounts = new ArrayList<>();
+
+        // CREATE SAMPLE ACCOUNTS
+        Account sampleAccount1 = new Account("John", "Silver");
+        Account sampleAccount2 = new Account("Madhu", "Platinu");
+        Account sampleAccount3 = new Account("Luca", "Gold");
+
+        // ADD THEM TO OUR ACCOUNTS LIST
+        myAccounts.add(sampleAccount1);
+        myAccounts.add(sampleAccount2);
+        myAccounts.add(sampleAccount3);
+
+        return myAccounts;
+    }
 
     public String getName() {
         System.out.println(getClass() + ": in getName()");
