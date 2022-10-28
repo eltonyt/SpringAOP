@@ -4,6 +4,7 @@ package com.elton.SpringAOP.aspect;
 import com.elton.SpringAOP.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -15,6 +16,17 @@ import java.util.List;
 @Aspect
 @Order(3)
 public class MyCloudLogAsyncAspect {
+
+    @AfterThrowing(
+            pointcut = "execution(* com.elton.SpringAOP.dao.AccountDAO.findAccounts(..))",
+            throwing = "theExc")
+    public void afterThrowingFindAccountsAdvice(JoinPoint theJoinPoint, Throwable theExc) {
+
+        String method = theJoinPoint.getSignature().toShortString();
+        System.out.println("\n===========>>>>>> Excuting @AfterReturning on method: " + method);
+
+        System.out.println("\n===========>>>>>> The exception is: " + theExc);
+    }
 
     // ADD A NEW ADVICE FOR @AFTERRETURNING ON THE FINDACCOUNTS METHOD
     @AfterReturning(

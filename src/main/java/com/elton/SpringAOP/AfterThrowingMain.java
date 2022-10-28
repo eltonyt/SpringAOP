@@ -5,21 +5,21 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.List;
 
-public class AfterReturnDemoApp {
-
+public class AfterThrowingMain {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(DemoConfig.class);
 
-        //get the bean from spring container
+//        get the bean from spring container
         AccountDAO theAccountDAO = context.getBean("accountDAO", AccountDAO.class);
-
-        List<Account> theAccounts = theAccountDAO.findAccounts(false);
-
-        System.out.println("\n\n Main Program: After Returning Demo App");
-        System.out.println("-----------------");
-        System.out.println(theAccounts);
-        System.out.println("\n");
-        context.close();
+        List<Account> theAccounts = null;
+        try {
+            // add a boolean flag to simulat exception;
+            boolean tripWire = true;
+            theAccounts = theAccountDAO.findAccounts(tripWire);
+        }
+        catch (Exception e) {
+            System.out.println("\n\n Main Program: After Throwing Advice");
+        }
     }
 }

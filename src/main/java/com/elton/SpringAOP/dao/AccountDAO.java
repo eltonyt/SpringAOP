@@ -13,7 +13,13 @@ public class AccountDAO {
     private String serviceNum;
 
 //    ADD A NEW METHOD: FIND ACCOUNTS
-    public List<Account> findAccounts() {
+    public List<Account> findAccounts(boolean tripWire) {
+
+        //simulate exception
+        if (tripWire) {
+            throw new RuntimeException("LALALA Simulating An Exception");
+        }
+
         List<Account> myAccounts = new ArrayList<>();
 
         // CREATE SAMPLE ACCOUNTS
