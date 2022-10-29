@@ -3,6 +3,7 @@ package com.elton.SpringAOP.aspect;
 
 import com.elton.SpringAOP.Account;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,27 @@ import java.util.List;
 @Aspect
 @Order(3)
 public class MyCloudLogAsyncAspect {
+
+    @Around("execution(* com.elton.SpringAOP.service.*.getFortune(..))")
+    public Object aroundGetFortune(ProceedingJoinPoint theProceedingJoinPoint) throws Throwable{
+        // print out method we are advising on
+        String method = theProceedingJoinPoint.getSignature().toShortString();
+        System.out.println("\n===========>>>>>> Executing @Around on method: " + method);
+
+        //get begin timestamp
+        long begin = System.currentTimeMillis();
+
+        //execute the method
+        Object result = theProceedingJoinPoint.proceed();
+
+        //get end time
+        long end = System.currentTimeMillis();
+
+        //calculate the time window
+        long duration = end - begin;
+        System.out.println("\n ======> Duration: " + duration / 1000.0 + " seconds");
+        return result;
+    }
 
     @After("execution(* com.elton.SpringAOP.dao.AccountDAO.findAccounts(..))")
     public void afterFinallyFindAccountAdvice(JoinPoint theJoinPoint) {
