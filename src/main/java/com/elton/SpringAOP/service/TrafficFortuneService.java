@@ -20,4 +20,11 @@ public class TrafficFortuneService {
         return "This is a fortune for you!";
 
     }
+
+    public String getFortune(boolean b) {
+        if (b) {
+            throw new RuntimeException("Some Exception got triggered");
+        }
+        return getFortune();
+    }
 }

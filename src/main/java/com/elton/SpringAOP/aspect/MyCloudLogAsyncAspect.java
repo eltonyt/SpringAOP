@@ -28,7 +28,19 @@ public class MyCloudLogAsyncAspect {
         long begin = System.currentTimeMillis();
 
         //execute the method
-        Object result = theProceedingJoinPoint.proceed();
+        Object result = null;
+
+        try {
+            theProceedingJoinPoint.proceed();
+        }
+        catch (Exception e) {
+            // log the exception
+            myLogger.info(e.getMessage());
+
+            // give user a custom message
+            result = "Major accident! But no worries, your private AOP helicopter is on the way.";
+        }
+
 
         //get end time
         long end = System.currentTimeMillis();
