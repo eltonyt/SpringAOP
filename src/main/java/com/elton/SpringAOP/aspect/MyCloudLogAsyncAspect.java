@@ -38,7 +38,10 @@ public class MyCloudLogAsyncAspect {
             myLogger.info(e.getMessage());
 
             // give user a custom message
-            result = "Major accident! But no worries, your private AOP helicopter is on the way.";
+            //result = "Major accident! But no worries, your private AOP helicopter is on the way.";
+
+            // rethrow the exception to let develoeprs handle it
+            throw e;
         }
 
 
